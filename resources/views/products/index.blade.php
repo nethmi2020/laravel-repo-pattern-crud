@@ -6,6 +6,13 @@
     <hr>
     <br>
 
+{{-- success msg --}}
+
+@if (session('success'))
+    <div class="bg-green-700 border border-green-400 text-white px-4 py-3 rounded mb-4">
+        {{session('success')}}
+    </div>
+@endif
 
     <div class="container">
        <a href="{{ url('product/create-new') }}" class="bg-blue-500 hover:bg-blue-600 text-white text-xs px-3 py-1 rounded">Add New Product</a>
@@ -29,10 +36,11 @@
                                     <div class="flex  gap-2">
                                         <a
                                            href="{{url('/product',$product->id)}}"  class="bg-blue-500 hover:bg-blue-600 text-white text-xs px-3 py-1 rounded">View</a>
-                                        <button
-                                            class="bg-green-500 hover:bg-green-600 text-white text-xs px-3 py-1 rounded">Edit</button>
-                                        <button
-                                            class="bg-red-500 hover:bg-red-600 text-white text-xs px-3 py-1 rounded">Delete</button>
+                                       <a
+                                           href="{{url('/product/edit',$product->id)}}"  class="bg-green-500 hover:bg-green-600 text-white text-xs px-3 py-1 rounded">Edit</a>
+                                          
+                                         <a
+                                           href="{{url('/product/delete',$product->id)}}"  class="bg-red-500 hover:bg-red-600 text-white text-xs px-3 py-1 rounded">Delete</a>
                                     </div>
 
                                 </td>
