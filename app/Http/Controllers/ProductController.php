@@ -24,7 +24,7 @@ class ProductController extends Controller
     {
 
         $product = $this->productRepo->find($id);
-       return view('products.product', compact('product'));
+        return view('products.product', compact('product'));
     }
 
     public function getProductCreateForm()
@@ -44,21 +44,18 @@ class ProductController extends Controller
         return redirect()->route('product.index')->with('success', 'Product created!');
     }
 
-
-       public function edit($id)
+    public function edit($id)
     {
 
         $product = $this->productRepo->find($id);
 
-
         // return view('products.edit')->with('product',$product);
-        return view('products.edit',compact('product'));
+        return view('products.edit', compact('product'));
     }
 
-
-     public function update(Request $request)
+    public function update(Request $request)
     {
-     
+
         $validated = $request->validate([
             'name'  => 'required|string|max:255',
             'price' => 'required|numeric|min:0',
@@ -67,14 +64,13 @@ class ProductController extends Controller
         return redirect()->route('product.index')->with('success', 'Product Updated!');
     }
 
-
-      public function delete($id)
+    public function delete($id)
     {
-     
-       $product = $this->productRepo->delete($id);
 
-       if($product){
-        return redirect()->route('product.index')->with('success', 'Product Deleted!');
-       }
+        $product = $this->productRepo->delete($id);
+
+        if ($product) {
+            return redirect()->route('product.index')->with('success', 'Product Deleted!');
+        }
     }
 }
